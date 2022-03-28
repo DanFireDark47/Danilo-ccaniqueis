@@ -122,7 +122,7 @@ export default function Update({ navigation }) {
                 confirmText="OK"
                 confirmButtonColor="#DD6B55"
                 onConfirmPressed={() => {
-                    hideAlerta();
+                hideAlerta();
                 }}
             />
         </View>
