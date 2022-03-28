@@ -1,0 +1,28 @@
+{
+  "name": "cacaniqueis",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
+  },
+  "dependencies": {
+    "expo": "~42.0.1",
+    "firebase": "8.2.3",
+    "react": "~16.13.1",
+    "react-dom": "~16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native-awesome-alerts": "^1.5.2",
+    "react-native-expo-fancy-alerts": "^2.1.0",
+    "react-native-gesture-handler": "~1.10.2",
+    "react-native-web": "^0.17.7",
+    "react-navigation": "^4.3.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9"
+  },
+  "private": true
+}
