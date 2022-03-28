@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Alert } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import firebase from '../firebase';
-
 import AwesomeAlert from 'react-native-awesome-alerts';
 
 export default function Update({ navigation }) {
@@ -12,7 +11,6 @@ export default function Update({ navigation }) {
     const [n3, setN3] = useState(null);
     const [ganhouperdeu, setGanhouPerdeu] = useState(null);
     const [countVit, setCountVit] = useState(0);
-
     const [alerta, setAlerta] = useState(false);
 
     function showAlerta() {
@@ -23,8 +21,6 @@ export default function Update({ navigation }) {
         setAlerta(false)
     }
 
-
-
     function ranking() {
         navigation.navigate("Ranking", {
         });
@@ -32,7 +28,6 @@ export default function Update({ navigation }) {
 
     function contavit() {
         try {
-
             firebase.database().ref('/cacanickeis/' + name).on('value', (snapshot) => {
                 if (snapshot.val() != null) {
                     setCountVit(snapshot.val().vitorias)
@@ -43,7 +38,6 @@ export default function Update({ navigation }) {
         } catch (error) {
             alert(error)
         }
-
     }
 
     function verificaVitoria() {
@@ -75,7 +69,6 @@ export default function Update({ navigation }) {
     }
 
     function jogar() {
-
         if (!name) {
             showAlerta();
         } else {
@@ -97,34 +90,25 @@ export default function Update({ navigation }) {
         }
     }
 
-
     return (
-
         <View style={styles.container}>
-
             <View>
                 <Text style={styles.text}>JOGO CAÇA NÍQUEIS</Text>
                 <TextInput placeholder='Nome' style={styles.textInput} onChangeText={name => setName(name)} value={name} />
             </View>
-
             <View style={styles.viewLinha}>
                 <Text style={styles.textSorteado}>{n1}</Text>
                 <Text style={styles.textSorteado}>{n2}</Text>
                 <Text style={styles.textSorteado}>{n3}</Text>
             </View>
-
             <TouchableOpacity style={styles.btnEnviar} onPress={() => { jogar() }}>
                 <Text style={styles.textBt}>Jogar</Text>
             </TouchableOpacity>
-
             <TouchableOpacity style={styles.btnEnviar} onPress={() => { ranking() }}>
                 <Text style={styles.textBt}>Ranking</Text>
             </TouchableOpacity>
-
             <Text style={styles.text}>{ganhouperdeu}</Text>
             <Text style={styles.text}>{"Vitórias: " + countVit}</Text>
-
-
             <AwesomeAlert
                 show={alerta}
                 showProgress={false}
@@ -137,15 +121,11 @@ export default function Update({ navigation }) {
                 //cancelText="No, cancel"
                 confirmText="OK"
                 confirmButtonColor="#DD6B55"
-
                 onConfirmPressed={() => {
                     hideAlerta();
                 }}
             />
-
         </View>
-
-
     );
 }
 
@@ -156,13 +136,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#4682B4',
         alignItems: 'center',
     },
-
     viewLinha: {
         marginTop: 15,
         flexDirection: 'row',
-
     },
-
     textSorteado: {
         width: 80,
         height: 80,
@@ -178,8 +155,6 @@ const styles = StyleSheet.create({
         //para alinhar no IOS
         overflow: 'hidden',
         lineHeight: 75,
-
-
     },
 
     textBt: {
@@ -187,19 +162,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 22,
         fontWeight: 'bold',
-
     },
-
     text: {
         margin: 5,
         color: '#fff',
         textAlign: 'center',
         fontSize: 30,
         fontWeight: 'bold',
-
-
     },
-
     btnEnviar: {
         backgroundColor: "#2F4F4F",
         color: '#fff',
@@ -212,7 +182,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 20
     },
-
     textInput: {
         width: 300,
         height: 50,
@@ -223,6 +192,4 @@ const styles = StyleSheet.create({
         marginTop: 5,
         fontSize: 36,
     },
-
-
 });
