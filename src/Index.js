@@ -5,6 +5,7 @@ import firebase from '../firebase';
 import AwesomeAlert from 'react-native-awesome-alerts';
 
 export default function Update({ navigation }) {
+    const [year, setYear] = useState(null);
     const [name, setName] = useState(null);
     const [n1, setN1] = useState(null);
     const [n2, setN2] = useState(null);
@@ -61,7 +62,8 @@ export default function Update({ navigation }) {
     function gravaVitoria(vitorias) {
         try {
             firebase.database().ref('/cacanickeis/' + name).update({
-                vitorias: vitorias
+                vitorias: vitorias,
+                year: year
             })
         } catch (error) {
             alert(error);
@@ -95,6 +97,7 @@ export default function Update({ navigation }) {
             <View>
                 <Text style={styles.text}>JOGO CAÇA NÍQUEIS</Text>
                 <TextInput placeholder='Nome' style={styles.textInput} onChangeText={name => setName(name)} value={name} />
+                <TextInput placeholder='Idade' style={styles.textInput} onChangeText={year => setYear(year)} value={year} />
             </View>
             <View style={styles.viewLinha}>
                 <Text style={styles.textSorteado}>{n1}</Text>

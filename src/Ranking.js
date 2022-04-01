@@ -22,6 +22,7 @@ export default function Update({ navigation }) {
                 snapshot.forEach((childItem) => {
                     list.push({
                         name: childItem.key,
+                        year: childItem.val().year,
                         vitorias: childItem.val().vitorias,
                     });
                 });
@@ -43,6 +44,7 @@ export default function Update({ navigation }) {
                 renderItem={({ item }) =>
                     <View style={styles.iconFlat}>
                         <Text style={styles.text}>Nome: {item.name} </Text>
+                        <Text style={styles.text}> Idade: {item.year}</Text>
                         <Text style={styles.text}> Vitorias: {item.vitorias}</Text>
                     </View>
                 } />
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
     textBt: {
         color: '#fff',
         textAlign: 'center',
-        fontSize: 22,
+        fontSize: 20,
         fontWeight: 'bold',
     },
     iconFlat: {
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
 
     },
     viewFlat: {
-        marginTop: 5
-        //maxHeight: 410,
+        marginTop: 5,
+        maxHeight: 410,
     }
 });
